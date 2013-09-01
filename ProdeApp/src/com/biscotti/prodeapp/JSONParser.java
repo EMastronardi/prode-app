@@ -1,17 +1,22 @@
 package com.biscotti.prodeapp;
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
- 
+
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONException;
-import org.json.JSONObject; 
+import org.json.JSONObject;
+
+import android.content.Context;
+import android.content.res.AssetManager;
 import android.util.Log;
 
 public class JSONParser {
@@ -23,7 +28,7 @@ public class JSONParser {
 	 
 	}
 	 
-	public JSONObject getJSONFromUrl(String url) {
+	public static JSONObject getJSONFromUrl(String url) {
 		// Making HTTP request
 		try {
 			// defaultHttpClient
@@ -63,8 +68,35 @@ public class JSONParser {
 		// return JSON String
 	    return jObj;
 	}
-	public JSONObject getFromFile(){
-		
-		return null;
+	public static JSONObject getFromFile(Context c){
+		Log.e("JSON Parser", "Entrando al metodo");
+		String json = null;
+        try {
+        	
+            InputStream is = c.getResources().getAssets().open("fecha1.json");
+
+            int size = is.available();
+
+            byte[] buffer = new byte[size];
+
+            is.read(buffer);
+
+            is.close();
+
+            json = new String(buffer, "UTF-8");
+
+
+        } catch (IOException ex) {
+            ex.printStackTrace();
+            return null;
+        }
+        try {
+			jObj = new JSONObject(json);
+		} catch (JSONException e) {
+			Log.e("JSON Parser", "Error parsing data " + e.toString());
+		}
+		// return JSON String
+	    return jObj;
 	}
+	
 }
