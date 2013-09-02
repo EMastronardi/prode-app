@@ -10,6 +10,7 @@ import org.json.JSONObject;
 import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
@@ -20,11 +21,12 @@ public class Boleta extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		boletaTable =(TableLayout) findViewById(R.id.tblBoleta);
-		generateBoleta();
+		
+		
 		//Leer JSON
 	 	setContentView(R.layout.activity_boleta);
-	 	
+	 	boletaTable =(TableLayout) findViewById(R.id.tblBoleta);
+	 	generateBoleta();
 	}
 
 	@Override
@@ -34,6 +36,7 @@ public class Boleta extends Activity {
 		return true;
 	}
 
+	@SuppressWarnings("deprecation")
 	private void generateBoleta(){
 		
 		// JSON Node names
@@ -56,25 +59,45 @@ public class Boleta extends Activity {
 		try {
 		    // Getting Array of Contacts
 		    matchs = json.getJSONArray(TAG_MATCH);
-		    String keyBreak = null;  
+		    String keyBreak = "";  
 		    // looping through All Contacts
 		    for(int i = 0; i < matchs.length(); i++){
 		        JSONObject c = matchs.getJSONObject(i);     
 		        String date = c.getString(TAG_DATE);
 		        if(!keyBreak.equals(date)){
 		        	//Generacion del TEXTVIEW 
+		        	keyBreak = date;
 		        	TableRow tblRow = new TableRow(this);
 		        	tblRow.setBackgroundResource(R.drawable.gradients);
 		        	TextView txt = new TextView(this);
 		        	txt.setText(date);
-		        	tblRow.addView(tblRow);
+		        	tblRow.addView(txt);
 		        	boletaTable.addView(tblRow);
 		        }
-		        
+		        TableRow tblRowEq = new TableRow(this);
+		        Button btnLocal = new Button(this);
+		        //btnLocal.setId(i);
+		        btnLocal.setText(c.getString(TAG_EQUIPOL));
+		        btnLocal.setBackgroundColor(getResources().getColor(R.color.blanco));
+		        android.view.Display display = ((android.view.WindowManager)getSystemService(this.WINDOW_SERVICE)).getDefaultDisplay();      
+		        btnLocal.setWidth((int)(display.getWidth()/3));		
 		        // Storing each json item in variable
-		        String equipoLocal = c.getString(TAG_EQUIPOL);
-		        String equipoVisitante = c.getString(TAG_EQUIPOV);
+		        Button btnEmpate = new Button(this);
+		        //empate.setId(i);
+		        btnEmpate.setText("Empate");
+		        btnEmpate.setBackgroundColor(getResources().getColor(R.color.blanco));      
+		        btnEmpate.setWidth((int)(display.getWidth()/3));	
+		        //String equipoLocal = c.getString(TAG_EQUIPOL);
+		        Button btnVisit = new Button(this);
+		        //btnVisit.setId(i);
+		        btnVisit.setText(c.getString(TAG_EQUIPOV));
+		        btnVisit.setBackgroundColor(getResources().getColor(R.color.blanco));      
+		        btnVisit.setWidth((int)(display.getWidth()/3));	
+		        tblRowEq.addView(btnLocal);
+		        tblRowEq.addView(btnEmpate);
+		        tblRowEq.addView(btnVisit);
 		        
+		        boletaTable.addView(tblRowEq);
 		        Integer idLocal = c.getInt(TAG_IDLOCAL);
 		        Integer idVisitante = c.getInt(TAG_IDVISITOR);
 		    }
