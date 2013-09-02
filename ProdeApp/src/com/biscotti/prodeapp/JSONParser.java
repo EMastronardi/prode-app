@@ -28,7 +28,7 @@ public class JSONParser {
 	 
 	}
 	 
-	public static JSONObject getJSONFromUrl(String url) {
+	public  JSONObject getJSONFromUrl(String url) {
 		// Making HTTP request
 		try {
 			// defaultHttpClient
@@ -68,23 +68,17 @@ public class JSONParser {
 		// return JSON String
 	    return jObj;
 	}
-	public static JSONObject getFromFile(Context c){
+	public JSONObject getFromFile(Context c){
 		Log.e("JSON Parser", "Entrando al metodo");
 		String json = null;
-        try {
-        	
-            InputStream is = c.getResources().getAssets().open("fecha1.json");
-
+        
+		try {
+            is = c.getResources().getAssets().open("fecha1.json");
             int size = is.available();
-
             byte[] buffer = new byte[size];
-
             is.read(buffer);
-
             is.close();
-
             json = new String(buffer, "UTF-8");
-
 
         } catch (IOException ex) {
             ex.printStackTrace();
