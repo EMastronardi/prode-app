@@ -78,6 +78,7 @@ public class Boleta extends Activity {
 		        Button btnLocal = new Button(this);
 		        //btnLocal.setId(i);
 		        btnLocal.setText(c.getString(TAG_EQUIPOL));
+		        btnLocal.setTextSize(12);
 		        btnLocal.setBackgroundColor(getResources().getColor(R.color.blanco));
 		        android.view.Display display = ((android.view.WindowManager)getSystemService(this.WINDOW_SERVICE)).getDefaultDisplay();      
 		        btnLocal.setWidth((int)(display.getWidth()/3));		
@@ -86,11 +87,13 @@ public class Boleta extends Activity {
 		        //empate.setId(i);
 		        btnEmpate.setText("Empate");
 		        btnEmpate.setBackgroundColor(getResources().getColor(R.color.blanco));      
-		        btnEmpate.setWidth((int)(display.getWidth()/3));	
+		        btnEmpate.setWidth((int)(display.getWidth()/3));
+		        btnEmpate.setTextSize(12);
 		        //String equipoLocal = c.getString(TAG_EQUIPOL);
 		        Button btnVisit = new Button(this);
 		        //btnVisit.setId(i);
 		        btnVisit.setText(c.getString(TAG_EQUIPOV));
+		        btnVisit.setTextSize(12);
 		        btnVisit.setBackgroundColor(getResources().getColor(R.color.blanco));      
 		        btnVisit.setWidth((int)(display.getWidth()/3));	
 		        tblRowEq.addView(btnLocal);
