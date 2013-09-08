@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <color name="negro">#000000</color>
     <color name="blanco">#FFFFFF</color>
     <color name="grisClaro">#DBDBDB</color>
@@ -11,4 +12,6 @@
     <color name="rojo">#F70303</color>
     <color name="verde_1">#2AFF00</color>
     <color name="verde_2">#2A9700</color>
+    <color name="black_overlay">#66000000</color>
+
 </resources>

@@ -9,6 +9,8 @@ import org.json.JSONObject;
 import android.os.AsyncTask;
 import android.os.Bundle;
 //import android.view.Menu;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TableLayout;
 import android.widget.TableRow;
@@ -24,9 +26,9 @@ import com.biscotti.persistence.ProdeOpenHelper;
 
 
 public class Boleta extends SherlockActivity{
-	TableLayout boletaTable = null;
-	EquipoDAO dao = null;
-	ProdeOpenHelper db;
+	private TableLayout boletaTable = null;
+	private EquipoDAO dao = null;
+	private ProdeOpenHelper db;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);	
