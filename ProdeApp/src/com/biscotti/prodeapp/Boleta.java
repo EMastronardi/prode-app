@@ -1,15 +1,19 @@
 package com.biscotti.prodeapp;
 
+import java.util.concurrent.ExecutionException;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.os.AsyncTask;
 import android.os.Bundle;
 //import android.view.Menu;
 import android.widget.Button;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
+
 import com.actionbarsherlock.app.SherlockActivity;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuInflater;
@@ -69,8 +73,21 @@ public class Boleta extends SherlockActivity{
 		JSONParser jParser = new JSONParser();
 		 
 		// getting JSON string from URL
-		JSONObject json = jParser.getFromFile(this);
+		//JSONObject json = jParser.getFromFile(this);
 		//JSONObject json =  jParser.getJSONFromUrl("http://www.resultados-futbol.com/scripts/api/api.php?key=ed6def436156233b75d0637a89b674c5&format=json&req=matchs&league=26&round=5");
+		String[] url = {"http://emastronardi.no-ip.org/json/fecha1.json"};
+		AsyncTask<String, Void, JSONObject> aJson =  new JSONParser().execute(url);
+		JSONObject json = null;
+		try {
+			json = aJson.get();
+		} catch (InterruptedException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (ExecutionException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+
 		
 		try {
 		    // Getting Array of Contacts
