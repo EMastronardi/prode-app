@@ -1,13 +1,21 @@
-<menu xmlns:android="http://schemas.android.com/apk/res/android" >
-
-    <!--  <item
-        android:id="@+id/action_settings"
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:prodeapp="http://schemas.android.com/apk/res-auto" > 
+   <!--  <item
+        android:id="@+id/action_refresh"
         android:orderInCategory="100"
-        android:showAsAction="never"
-        android:title="@string/action_settings"/>-->
- 	<item
-        android:id="@+id/favoritos"
+        prodeapp:showAsAction="never"
+        android:icon="@drawable/ic_refresh"
+        android:title="@string/action_settings"/>--> 
+    <item
+        android:id="@+id/action_fecha"
+        android:orderInCategory="100"
+        prodeapp:showAsAction="ifRoom"
         android:icon="@drawable/ic_menu_fecha"
-        android:showAsAction="always"
-        android:title="prueba"/>
+        android:title="@string/action_settings"/>
+   <item
+        android:id="@+id/action_refresh"
+        android:orderInCategory="100"
+        prodeapp:showAsAction="ifRoom"
+        android:icon="@drawable/ic_refresh"
+        android:title="@string/action_settings"/>
 </menu>

@@ -7,5 +7,8 @@
     <string name="title_activity_preload">PreloadActivity</string>
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="fragment1">fragment1</string>
+    <string name="draw_open">Open</string>
+    <string name="draw_close">Close</string>
 
 </resources>

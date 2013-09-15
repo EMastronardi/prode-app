@@ -13,5 +13,6 @@
     <color name="verde_1">#2AFF00</color>
     <color name="verde_2">#2A9700</color>
     <color name="black_overlay">#66000000</color>
-
+    <color name="actionBarTextColor">#FFFFFF</color>
+	<color name="prodeAppMain">#335f02</color>
 </resources>
